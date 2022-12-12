@@ -1,8 +1,6 @@
 package com.project.demo.bibliotecaPersonal.mapper;
 
-import com.project.demo.bibliotecaPersonal.dto.LibroDto;
 import com.project.demo.bibliotecaPersonal.dto.PrestamoDto;
-import com.project.demo.bibliotecaPersonal.entity.LibroEntity;
 import com.project.demo.bibliotecaPersonal.entity.PrestamoEntity;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class prestamoMapper {
+public class PrestamoMapper {
 
     public PrestamoDto prestamoEntity2Dto(PrestamoEntity entity){
 
@@ -27,7 +25,7 @@ public class prestamoMapper {
 
     }
 
-    public PrestamoEntity prestamoEntity2Entity(PrestamoDto dto) {
+    public PrestamoEntity prestamoDto2Entity(PrestamoDto dto) {
 
         PrestamoEntity entity = new PrestamoEntity();
 
