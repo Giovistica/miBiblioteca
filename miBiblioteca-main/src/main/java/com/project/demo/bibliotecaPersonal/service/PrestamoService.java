@@ -10,10 +10,11 @@ public interface PrestamoService {
 
     PrestamoDto getPrestamoById(String prestamoId);
 
-    PrestamoDto updatePrestamoById(String prestamoId);
-
     PrestamoDto deletePrestamoById(String prestamoId);
 
     List<PrestamoDto> getAllPrestamos();
+
+    PrestamoDto cerrarPrestamoById(String prestamoId);
+
 
 }

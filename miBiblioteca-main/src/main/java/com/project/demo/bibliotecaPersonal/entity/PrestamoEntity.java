@@ -23,14 +23,17 @@ public class PrestamoEntity {
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
-    @ManyToOne()
-    @JoinColumn(name = "libro_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "libro")
     private LibroEntity libro;
 
     @CreationTimestamp
+    @Column(updatable = false)
     private LocalDate fechaEntrega;
 
-    @UpdateTimestamp
+
+
+    @Column(name = "fecha_devolucion")
     private LocalDate fechaDevolucion;
 
    @Column(columnDefinition = "varchar(50)",nullable = false)

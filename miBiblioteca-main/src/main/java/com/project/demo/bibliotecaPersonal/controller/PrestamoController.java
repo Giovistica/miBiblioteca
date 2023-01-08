@@ -37,10 +37,19 @@ public class PrestamoController {
     }
 
 
-    @DeleteMapping("/{is}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable("id") String id){
 
         prestamoService.deletePrestamoById(id);
-        return ResponseEntity.status(HttpStatus.OK).body("Usuario Eliminado correctamente");
+        return ResponseEntity.status(HttpStatus.OK).body("Prestamo Eliminado correctamente");
+
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<PrestamoDto> cerrarPrestamoById(@PathVariable("id") String id) {
+
+        PrestamoDto prestamo = prestamoService.cerrarPrestamoById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(prestamo);
+
+    }
+
 }

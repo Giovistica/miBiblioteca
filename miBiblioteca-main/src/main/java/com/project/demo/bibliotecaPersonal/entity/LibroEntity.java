@@ -35,7 +35,7 @@ public class LibroEntity {
 
     private boolean enPrestamo = false;
 
-    @OneToMany(mappedBy = "libro")
+    @OneToMany(mappedBy = "libro", cascade = CascadeType.PERSIST)
     List<PrestamoEntity> prestamos;
 
 }

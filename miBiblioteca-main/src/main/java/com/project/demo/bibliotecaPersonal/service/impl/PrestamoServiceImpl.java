@@ -1,7 +1,6 @@
 package com.project.demo.bibliotecaPersonal.service.impl;
 
 import com.project.demo.bibliotecaPersonal.dto.PrestamoDto;
-import com.project.demo.bibliotecaPersonal.entity.LibroEntity;
 import com.project.demo.bibliotecaPersonal.entity.PrestamoEntity;
 import com.project.demo.bibliotecaPersonal.mapper.PrestamoMapper;
 import com.project.demo.bibliotecaPersonal.repository.PrestamoRepository;
@@ -9,7 +8,7 @@ import com.project.demo.bibliotecaPersonal.service.PrestamoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,10 +45,7 @@ public class PrestamoServiceImpl implements PrestamoService {
 
     }
 
-    @Override
-    public PrestamoDto updatePrestamoById(String prestamoId) {
-        return null;
-    }
+
 
     @Override
     public PrestamoDto deletePrestamoById(String id) {
@@ -75,4 +71,24 @@ public class PrestamoServiceImpl implements PrestamoService {
         List<PrestamoEntity> list = prestamoRepository.findAll();
         return prestamoMapper.prestamoEntity2DtoList(list);
     }
+
+    @Override
+    public PrestamoDto cerrarPrestamoById(String prestamoId) {
+
+        Optional<PrestamoEntity> opt = prestamoRepository.findById(prestamoId);
+        try{
+            opt.isPresent();
+            PrestamoEntity result = opt.get();
+            result.setFechaDevolucion(LocalDate.now());
+            prestamoRepository.save(result);
+            return prestamoMapper.prestamoEntity2Dto(result);
+        }
+        catch (Exception e){
+            return null;
+        }
+
+
+    }
+
+
 }
